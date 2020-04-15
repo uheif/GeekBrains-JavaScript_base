@@ -1,0 +1,13 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	money = +prompt("скока денег?");
+	perc = +prompt("процент");
+	moreMoney = money * (perc / 100)
+
+	for(var year = 1; year <= 5; year++){
+		money += moreMoney
+		document.write(money + '<br />')
+	}
+
+</script>

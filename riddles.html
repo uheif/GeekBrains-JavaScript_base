@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+    var guessAnswerArray1 = [["Без окон без дверей полна горница людей", "огурец", "кабачок"], 
+                            ["3 + 5", "8"], 
+                            ["Морковка?", "морковка"], 
+                            ["ещё разик", "ещё морковка"]]
+
+    var points = 0;
+
+    function answerFind(someStr, someArray, elementIndex){
+        for (var i = elementIndex; i < someArray.length; i++) {
+            if (someArray[i] == someStr)
+                return true;
+        }
+    }
+
+    function level(someArray) {
+        for(var i = 0; i < someArray.length; i++){
+        	var guess = someArray[i][0];
+        	var userAnswer = prompt(guess);
+
+            if(answerFind(userAnswer, someArray[i], 1)){
+        	    alert("Ура!");
+        	    points++;
+                } else {
+            	    alert("Не ура!");
+            }
+        }
+    }
+
+    level(guessAnswerArray1);
+
+    alert("Вы набрали " + points + "\nДо новых встреч!");
+
+</script>

@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+	function generateText(charsArray, textLen){
+		var text = ''
+		for(var i = 0; i < textLen; i++){
+			text += charsArray[getRandomNumber(charsArray.length - 1)]
+		}
+		return text
+	}
+
+	function getRandomNumber(max){
+		return Math.round(Math.random() * max)
+	}
+	
+	function level(charsArray, textLen){
+		while(true){
+				var text = generateText(charsArray, textLen);
+				var userText = prompt("Повторите строку: " + text);
+				if(userText == text){
+					alert("Вы молодец!")
+					break
+				} else {
+					alert("Вы не молодец!")
+				}
+			}
+		}
+	var letters = "фываждло";
+	var start = 0;
+	var end = letters.length -1;
+
+	for(var i = 0; i < letters.length; i++){
+		let lettersArray = [letters[start], letters[end - start]];
+		level(lettersArray, 10);
+		start += 1;
+	}
+</script>

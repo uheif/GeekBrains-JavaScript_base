@@ -1,0 +1,50 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	
+	function my_func(n){
+		let my_array = [];
+		for(i = 0; i <= n; i++){
+			my_array.push(i);
+		}
+		return my_array;
+	}
+
+	document.write(my_func(5), '<br />');
+
+	function array_sum(some_array){
+		my_sum = 0
+		for(i = 0; i < some_array.length; i++){
+			my_sum += some_array[i];
+		}
+		return my_sum;
+	}
+
+	document.write(array_sum([1, 2, 3]), '<br />')
+
+	function array_max(some_array){
+		my_max = some_array[0]
+		for(i = 1; i < some_array.length; i++){
+			if(some_array[i] > my_max){
+				my_max = some_array[i];
+			}
+		}
+		return my_max;
+	}
+
+	document.write(array_max([1, 2, 3]), '<br />')
+
+	function array_even(some_array){
+		let new_array = new Array
+		for(let i of some_array){
+			if(i % 2 == 0){
+				new_array.push(i);
+			}
+		}
+		return new_array;
+	}
+
+	document.write(array_even([1, 2, 3]), '<br />')
+
+
+
+</script>
