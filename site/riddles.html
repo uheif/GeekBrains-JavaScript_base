@@ -1,17 +1,16 @@
 <meta charset="utf-8">
 <script type="text/javascript">
 	
-    var guessAnswerArray1 = [["Без окон без дверей полна горница людей", "огурец", "кабачок"], 
+    var guessAnswerArray = [["Без окон без дверей полна жопа огурцов", "ножницы", "хуйня какая-то"], 
                             ["3 + 5", "8"], 
                             ["Морковка?", "морковка"], 
                             ["ещё разик", "ещё морковка"]]
 
     var points = 0;
 
-    function answerFind(someStr, someArray, elementIndex){
+    function answerFind(someStr, someArray, elementIndex=1){
         for (var i = elementIndex; i < someArray.length; i++) {
-            if (someArray[i] == someStr)
-                return true;
+            return someArray[i] == someStr;
         }
     }
 
@@ -20,7 +19,7 @@
         	var guess = someArray[i][0];
         	var userAnswer = prompt(guess);
 
-            if(answerFind(userAnswer, someArray[i], 1)){
+            if(answerFind(userAnswer, someArray[i])){
         	    alert("Ура!");
         	    points++;
                 } else {
@@ -29,7 +28,7 @@
         }
     }
 
-    level(guessAnswerArray1);
+    level(guessAnswerArray);
 
     alert("Вы набрали " + points + "\nДо новых встреч!");
 
