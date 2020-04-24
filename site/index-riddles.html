@@ -2,64 +2,74 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Загадка</title>
+	<title>Загадки</title>
 	<link rel="stylesheet" href="style.css">
-	<script type="text/javascript">
-		
-	    var guessAnswerArray = [["Без окон без дверей полна жопа огурцов", "ножницы", "хуйня какая-то"], 
-	                            ["3 + 5", "8"], 
-	                            ["Морковка?", "морковка"], 
-	                            ["ещё разик", "ещё морковка"]]
-
-	    var points = 0;
-
-	    function answerFind(someStr, someArray, elementIndex=1){
-	        for (var i = elementIndex; i < someArray.length; i++) {
-	            if(someArray[i] == someStr) {
-	            	return true
-	            }
-	        }
-	    }
-
-	    function level(someArray) {
-	    	var guess = someArray[0][0];
-	    	var userAnswer = document.getElementById('userAnswer').value.toLowerCase();
-
-	        if(answerFind(userAnswer, someArray[0])){
-	    	    alert("Ура!");
-	    	    points++;
-	        } else {
-	        	alert("Не ура!");
-	        }
-    }
-</script>
 </head>
 <body>
 	<div id="header">
 		<b><a href="index.html">Главная</a></b>
 		<span></span>
-		<b><a href="index-riddles.html">Загадка</a></b>
+		<b><a href="index-riddles.html">Загадки</a></b>
 		<span></span>
 		<b><a href="index-guess.html">Угадайка</a></b>
 		<span></span>
 	</div>
 
 	<div id="content">
-		<h1 id="h1_header">Загадка</h1>
+		<h1 id="h1_header">Загадки</h1>
 		<div id="center">
 			<div id="box">
 				<p id="riddle"></p>
-				<script type="text/javascript">
-					var riddle = document.getElementById("riddle");
-					riddle.innerHTML = guessAnswerArray[0][0]
-				</script>
-				<br><br><br>
-				<input type="text" id="userAnswer">
-				<br>
-				<a href="#" onClick="level(guessAnswerArray);">Ответить</a>
+				<p><input type="text" id="userAnswer"></p>
+				<a href="#" id="button" onclick="game();">Ответить</a>
 			</div>	
 		</div>
 	</div>
+
+	<script type="text/javascript">
+
+	    var guessAnswerArray = [["Без окон без дверей полна жопа огурцов", "ножницы"],
+	                            ["С пальмы вниз, на пальму снова ловко прыгает…", "обезьяна"],
+	                            ["Скорей на берег выбегай! Плывет зубастый…", "крокодил"]];
+
+	    var level = 0;
+
+	    var riddle = document.getElementById("riddle");
+	    riddle.innerHTML = guessAnswerArray[level][0];
+
+	    var points = 0;
+
+	    function hide(id) {
+	    	document.getElementById(id).style.display = "none";
+	    }
+
+	    function checkAnswer(answer, answerArray) {
+			return answer == answerArray[1];
+	    }
+
+	    function game() {
+
+		    var userAnswer = document.getElementById("userAnswer").value.toLowerCase();
+
+		    if (checkAnswer(userAnswer, guessAnswerArray[level])) {
+		    	alert("Ура! Вы угадалец!");
+			    points++;
+		    } else {
+		    	alert("Нет, " + guessAnswerArray[level][1]);
+		    }
+
+		    document.getElementById("userAnswer").value = ""
+		    level++;
+
+		    if (level == guessAnswerArray.length) {
+		    	hide("userAnswer");
+		    	hide("button");
+		    	riddle.innerHTML = "Вы набрали " + points;
+		    } else {
+		    	riddle.innerHTML = guessAnswerArray[level][0];
+		    }
+		}
+	</script>
 
 	<div id="footer">
 		<p>Copyright &copy; fer uheif</p>

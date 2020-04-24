@@ -9,7 +9,7 @@
 	<div id="header">
 		<b><a href="index.html">Главная</a></b>
 		<span></span>
-		<b><a href="index-riddles.html">Загадка</a></b>
+		<b><a href="index-riddles.html">Загадки</a></b>
 		<span></span>
 		<b><a href="index-guess.html">Угадайка</a></b>
 		<span></span>
@@ -19,10 +19,62 @@
 		<h1 id="h1_header">Игра угадайка</h1>
 		<div id="center">
 			<div id="box">
-				<p>Страница в разработке, Димуля</p>
+				<p id="gameHead">Угадайте число от 0 до 100. А не хотите, так введите q.</p>
+				<p id="gamer1"><input type="text" id="1">		Игрок 1</p>
+				<p id="gamer2"><input type="text" id="2">		Игрок 2</p>
+				<a href="#" id="button" onclick="game();">Ответить</a>
 			</div>	
 		</div>
 	</div>
+
+	<script type="text/javascript">
+
+		function hide(id) {
+			document.getElementById(id).style.display = "none"
+		}
+
+		function hideGame() {
+			hide("gamer1");
+			hide("gamer2");
+			hide("button");
+		}
+	
+		var answer = parseInt(Math.random() * 100);
+		var users = [0, 1, 2]
+		var winners = []
+
+		function game() {
+			for (var i = 1; i < users.length; i++) {
+				var user = users[i]
+				if (user == 0) {
+					continue;
+				} else {
+					var userAnswer = document.getElementById(String(i)).value;
+					if (userAnswer == 'q') {
+						users.splice(user, 1, 0);
+						document.getElementById(String(i)).setAttribute("disabled", "disabled");
+					} else {
+						userAnswer = +userAnswer;
+						if (userAnswer == answer) {
+							winners.push(user);
+						} else if (userAnswer > answer)	{
+							document.getElementById(String(i)).value = "Многовато";
+						} else if (userAnswer < answer)	{
+							document.getElementById(String(i)).value = "Маловато";
+						}
+					}
+				}
+			}
+			if (winners.length > 0) {
+				hideGame();
+				if (winners.length == 1) {
+					document.getElementById("gameHead").innerHTML = "Поздравляшки! Игрок " + winners + " молодец!";
+				} else {
+					document.getElementById("gameHead").innerHTML = "Поздравляшки! Игроки " + winners + " молодцы!";
+				}		
+			}
+		}
+	</script>
 
 	<div id="footer">
 		<p>Copyright &copy; fer uheif</p>
