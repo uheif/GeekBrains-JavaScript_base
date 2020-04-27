@@ -1,0 +1,1 @@
+<p>Copyright &copy; <?php echo date("Y");?> fer uheif</p>

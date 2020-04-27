@@ -6,15 +6,7 @@
 	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<div id="header">
-		<b><a href="index.html">Главная</a></b>
-		<span></span>
-		<b><a href="index-riddles.html">Загадки</a></b>
-		<span></span>
-		<b><a href="index-guess.html">Угадайка</a></b>
-		<span></span>
-	</div>
-
+	<?php include "menu.php";?>
 	<div id="content">
 		<h1 id="h1_header">Игра угадайка</h1>
 		<div id="center">
@@ -77,7 +69,7 @@
 	</script>
 
 	<div id="footer">
-		<p>Copyright &copy; fer uheif</p>
+		<?php include "footer.php";?>
 	</div>
 </body>
 </html>
